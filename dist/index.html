@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portofolio</title>
-    <link rel="stylesheet" href="src/output.css" />
+    <link rel="stylesheet" href="../src/output.css" />
+    <script>
+      document.documentElement.classList.toggle(
+        "dark",
+        localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches),
+      );
+    </script>
   </head>
   <body>
     <!-- Header Start -->
@@ -37,36 +45,56 @@
             </button>
             <nav
               id="nav-menu"
-              class="absolute top-full right-4 hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg transition-all duration-300 ease-in-out lg:static lg:block lg:max-w-full lg:rounded-none lg:bg-transparent lg:shadow-none"
+              class="absolute top-full right-4 w-full max-w-[250px] rounded-lg bg-teal-500 py-5 shadow-lg lg:static lg:block lg:max-w-full lg:rounded-none lg:bg-transparent lg:shadow-none"
             >
               <ul class="lg:flex">
                 <li class="group">
                   <a
                     href="#home"
-                    class="mx-8 flex py-2 text-slate-700 group-hover:text-teal-500"
+                    class="mx-8 flex py-2 lg:text-teal-500 group-hover:text-black dark:text-white"
                     >Home</a
                   >
                 </li>
                 <li class="group">
                   <a
                     href="#about"
-                    class="mx-8 flex py-2 text-slate-700 group-hover:text-teal-500"
+                    class="mx-8 flex py-2 lg:text-teal-500 group-hover:text-black dark:text-white"
                     >About me</a
                   >
                 </li>
                 <li class="group">
                   <a
                     href="#portofolio"
-                    class="mx-8 flex py-2 text-slate-700 group-hover:text-teal-500"
+                    class="mx-8 flex py-2 lg:text-teal-500 group-hover:text-black dark:text-white"
                     >Portofolio</a
                   >
                 </li>
                 <li class="group">
                   <a
                     href="#contact"
-                    class="mx-8 flex py-2 text-slate-700 group-hover:text-teal-500"
+                    class="mx-8 flex py-2 lg:text-teal-500 group-hover:text-black dark:text-white"
                     >Contact</a
                   >
+                </li>
+                <li class="flex items-center pl-8">
+                  <div class="flex">
+                    <span class="mr-2 lg:text-slate-500 lg:dark:text-white"
+                      >light</span
+                    >
+                    <input type="checkbox" class="hidden" id="dark-toggle" />
+                    <label for="dark-toggle">
+                      <div
+                        class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1"
+                      >
+                        <div
+                          class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-500 ease-in-out"
+                        ></div>
+                      </div>
+                    </label>
+                    <span class="ml-2 lg:text-slate-500 lg:dark:text-white"
+                      >dark</span
+                    >
+                  </div>
                 </li>
               </ul>
             </nav>
@@ -77,22 +105,23 @@
     <!-- Header End -->
 
     <!-- Hero Section Start -->
-    <section id="home" class="pt-36">
+    <section id="home" class="pt-36 pb-56 dark:bg-slate-900">
       <div class="container 2xl:px-40">
         <div class="flex flex-wrap">
           <div class="w-full self-center px-4 lg:mx-auto lg:w-1/2">
             <h1 class="font-semibold text-teal-400 md:text-xl">
               Hello World👋, I'am
-              <span class="mb-1 block text-4xl font-bold text-slate-800"
+              <span
+                class="mt-4 mb-2 block text-4xl font-bold text-slate-800 dark:text-white"
                 >Rakensa Dwifa Noverdiastra</span
               >
             </h1>
-            <h2 class="mb-4 font-medium text-slate-600">
+            <h2 class="mb-4 font-medium text-teal-500 dark:text-sky-400">
               Undergradueated Engineering Physics & Web Developer
             </h2>
-            <p class="mb-10 font-medium text-slate-600">
+            <p class="mb-10 font-medium text-slate-600 dark:text-white">
               Learning web programming is easy and fun right?
-              <span class="font-bold text-slate-800"
+              <span class="font-bold text-slate-800 dark:text-white"
                 >Nope. It's difficult!</span
               >
             </p>
@@ -105,7 +134,7 @@
           <div class="w-full lg:w-1/2">
             <div class="mt-10">
               <img
-                src="img/profile.jpg"
+                src="../img/profile.jpg"
                 class="mx-auto max-w-full rounded-full"
                 alt="profile photo"
                 width="300"
@@ -119,43 +148,33 @@
     <!-- Hero Section End -->
 
     <!-- About Section Start -->
-    <section id="about" class="pt-36 pb-32">
+    <section id="about" class="pt-36 pb-72 dark:bg-slate-800">
       <div class="container 2xl:px-40">
         <div class="flex flex-wrap">
           <div class="mb-10 w-full px-4 lg:w-1/2">
-            <h3 class="text-lg font-bold text-teal-500 uppercase">About me</h3>
-            <p class="pr-20 font-medium text-slate-500 lg:text-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-              eius aut consequuntur vel, expedita reprehenderit.
+            <h3 class="mb-2 text-2xl font-bold text-teal-500">About me</h3>
+            <p
+              class="pr-20 text-justify font-medium text-slate-500 lg:text-lg dark:text-slate-300"
+            >
+              I am a student of Engineering Physics at Telkom University Bandung
+              with a strong interest in web development. Amidst my busy college
+              life, I actively learn web programming and I want to continue
+              developing my skills in this field. I possess a strong work ethic,
+              excellent team communication skills, leadership qualities, the
+              ability to multitask, and am always target-oriented.
             </p>
           </div>
           <div class="w-full px-4 lg:w-1/2">
-            <h3 class="text-2xl font-semibold text-teal-500">Let's connect</h3>
-            <p class="mb-6 font-medium text-slate-500 lg:text-lg">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum,
-              nesciunt?
+            <h3 class="mb-2 text-2xl font-semibold text-teal-500">
+              Let's connect
+            </h3>
+            <p
+              class="mb-5 font-medium text-slate-500 lg:text-lg dark:text-slate-300"
+            >
+              you want to discuss something with me? you can contact me through
+              the following social media
             </p>
             <div class="mb-5 flex items-center justify-center lg:justify-start">
-              <!-- Whatsapp -->
-              <a
-                href="https://wa.me/+6281231274643"
-                target="_blank"
-                class="mr-4 flex h-10 w-10 items-center justify-center rounded-full border-2 border-teal-500 transition duration-300 ease-in-out hover:bg-teal-800 hover:text-white hover:shadow-md hover:shadow-slate-500"
-              >
-                <svg
-                  role="img"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  class="fill-current"
-                  color="#25D366"
-                >
-                  <title>WhatsApp</title>
-                  <path
-                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
-                  />
-                </svg>
-              </a>
               <!-- Instagram -->
               <a
                 href="https://www.instagram.com/rakensadwifa/?utm_source=ig_web_button_share_sheet"
@@ -221,19 +240,20 @@
     <!-- About Section End -->
 
     <!-- Portofolio Section Start-->
-    <section id="portofolio" class="bg-slate-200 pt-36 pb-16">
+    <section id="portofolio" class="bg-slate-200 pt-36 pb-16 dark:bg-slate-700">
       <div class="container">
         <div class="w-full px-4">
-          <div class="mx-auto mb-16 max-w-xl text-center">
+          <div class="mx-auto mb-8 max-w-xl text-center">
             <h3 class="mb-2 text-xl font-semibold text-teal-500 md:text-2xl">
               My Portofolio
             </h3>
-            <h2 class="mb-4 text-2xl font-bold text-slate-700 md:text-3xl">
+            <h2
+              class="mb-2 text-2xl font-bold text-slate-700 md:text-3xl dark:text-sky-400"
+            >
               Latest Project
             </h2>
-            <p class="font-medium text-slate-500 md:text-lg">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic,
-              eligendi!
+            <p class="font-medium text-slate-500 md:text-lg dark:text-white">
+              Here are some projects I've been working on lately.
             </p>
           </div>
         </div>
@@ -242,13 +262,15 @@
         >
           <div class="mb-12 p-4 md:w-1/2">
             <div class="overflow-hidden rounded-md shadow-md shadow-slate-500">
-              <img src="img/1.png" alt="personal website" />
+              <img src="../img/1.png" alt="personal website" />
             </div>
-            <h3 class="mt-5 mb-3 text-xl font-semibold text-slate-700">
-              Landing Page Rakensa Dwifa
+            <h3
+              class="mt-4 mb-2 text-xl font-semibold text-slate-700 dark:text-sky-400"
+            >
+              My Website Portofolio with Tailwind CSS
             </h3>
-            <p class="font-medium text-slate-500">
-              Landing page made with html, css, and javascript
+            <p class="font-medium text-slate-500 dark:text-white">
+              made with html, css, and javascript
             </p>
           </div>
         </div>
@@ -257,15 +279,16 @@
     <!-- Portofolio Section End -->
 
     <!-- Contact Section Start -->
-    <section id="contact" class="pt-36 pb-32">
+    <section id="contact" class="pt-36 pb-32 dark:bg-slate-900">
       <div class="container">
         <div class="w-full px-4">
           <div class="mx-auto mb-16 max-w-xl text-center">
             <h2 class="mb-2 text-xl font-semibold text-teal-500 md:text-2xl">
               Contact
             </h2>
-            <p class="font-medium text-slate-700 md:text-lg">
-              Lorem, ipsum dolor sit amet consectetur adipisicing.
+            <p class="font-medium text-slate-700 md:text-lg dark:text-white">
+              If you want to discuss something with me, you can fill out the
+              form below
             </p>
           </div>
         </div>
@@ -311,7 +334,7 @@
     <!-- Contact Section End -->
 
     <!-- Footer Section Start -->
-    <footer class="bg-slate-900 pt-24 pb-16">
+    <footer class="bg-slate-900 pt-24 pb-16 dark:bg-slate-800">
       <div class="container">
         <div class="flex flex-wrap">
           <div class="mb-12 w-full px-4 text-slate-300 md:w-1/2 lg:px-20">
@@ -352,26 +375,6 @@
         <div class="w-full px-4">
           <div class="border-t-2 border-slate-700 pt-10">
             <div class="mb-5 flex items-center justify-center">
-              <!-- Whatsapp -->
-              <a
-                href="https://wa.me/+6281231274643"
-                target="_blank"
-                class="mr-4 flex h-10 w-10 items-center justify-center rounded-full border-2 border-teal-500 transition duration-300 ease-in-out hover:bg-teal-800 hover:text-white hover:shadow-md hover:shadow-slate-500"
-              >
-                <svg
-                  role="img"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  class="fill-current"
-                  color="#25D366"
-                >
-                  <title>WhatsApp</title>
-                  <path
-                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
-                  />
-                </svg>
-              </a>
               <!-- Instagram -->
               <a
                 href="https://www.instagram.com/rakensadwifa/?utm_source=ig_web_button_share_sheet"
@@ -451,6 +454,15 @@
       </div>
     </footer>
     <!-- Footer Section End -->
-    <script src="dist/js/script.js"></script>
+
+    <!-- Back to Top Start -->
+    <a
+      href="#home"
+      class="fixed right-4 bottom-4 z-[9999] hidden h-14 w-14 items-center justify-center rounded-full bg-teal-500 p-4 hover:animate-pulse"
+      id="to-top"
+      ><span class="mt-2 block h-5 w-5 rotate-45 border-t-2 border-l-2"></span
+    ></a>
+    <!-- Back to Top End -->
+    <script src="../dist/js/script.js"></script>
   </body>
 </html>
