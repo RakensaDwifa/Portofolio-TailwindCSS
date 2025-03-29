@@ -56,3 +56,28 @@ if (
 } else {
   darkToggle.checked = false;
 }
+
+// Running Contact Form
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbxEhL5rjWpdiTQaJrn2PAuJSgpEmhvkkLY-UkhlyP1z-LsBPrQk943tlwudvix1MO98/exec";
+const form = document.forms["contact-form"];
+const submit = document.querySelector("#submit");
+const loading = document.querySelector("#loading");
+
+//Ketika tombol submit di klik
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  // hilangkan tombol submit dan tampilkan loading
+  submit.classList.toggle("hidden");
+  loading.classList.toggle("hidden");
+  fetch(scriptURL, { method: "POST", body: new FormData(form) })
+    .then((response) => {
+      console.log("Success!", response);
+      // tampilkan tombol submit dan hilangkan loading
+      submit.classList.toggle("hidden");
+      loading.classList.toggle("hidden");
+      form.reset();
+      alert("Terima kasih, pesan Anda telah terkirim.");
+    })
+    .catch((error) => console.error("Error!", error.message));
+});
